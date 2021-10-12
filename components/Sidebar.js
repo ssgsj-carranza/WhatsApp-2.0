@@ -7,6 +7,7 @@ import SearchIcon from '@material-ui/icons/Search';
 function Sidebar() {
     return (
         <Container>
+            
             <Header>
                 <UserAvatar />
                 <IconsContainer>
@@ -24,12 +25,15 @@ function Sidebar() {
 
             <Search>
                 <SearchIcon />
+                <SearchInput placeholder='Search in chat' />
             </Search>
+        
         </Container>
     )
 }
 
 export default Sidebar
+
 
 const Container = styled.div `
 
@@ -55,10 +59,19 @@ const UserAvatar = styled(Avatar) `
     }
 `;
 
-const IconsContainer = styled.div`
+const IconsContainer = styled.div `
 
 `;
 
 const Search = styled.div `
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 2px;
+`;
 
+const SearchInput = styled.input `
+    outline-width: 0;
+    border: none;
+    flex: 1;
 `;
