@@ -42,6 +42,7 @@ const Container = styled.div `
 
 `;
 
+
 const Header = styled.div `
     display: flex;
     position: sticky;
@@ -55,6 +56,7 @@ const Header = styled.div `
     border-bottom: 1px solid whitesmoke;
 `;
 
+
 const UserAvatar = styled(Avatar) `
     cursor: pointer;
     :hover {
@@ -62,9 +64,11 @@ const UserAvatar = styled(Avatar) `
     }
 `;
 
+
 const IconsContainer = styled.div `
 
 `;
+
 
 const Search = styled.div `
     display: flex;
@@ -73,11 +77,13 @@ const Search = styled.div `
     border-radius: 2px;
 `;
 
+
 const SearchInput = styled.input `
     outline-width: 0;
     border: none;
     flex: 1;
 `;
+
 
 const SidebarButton = styled(Button) `
     width: 100%;
