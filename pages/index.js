@@ -22,3 +22,4 @@ export default function Home() {
 // npm install firebase or npm install firebase@8.7.1
 // npm install email-validator
 // npm install react-firebase-hooks
+// npm install better-react-spinkit
