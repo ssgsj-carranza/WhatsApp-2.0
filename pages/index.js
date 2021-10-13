@@ -19,6 +19,6 @@ export default function Home() {
 // npm install --save styled-components
 // npm install @material-ui/core
 // npm install @material-ui/icons
-// npm install firebase
+// npm install firebase or npm install firebase@8.7.1
 // npm install email-validator
 // npm install react-firebase-hooks

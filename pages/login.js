@@ -7,6 +7,12 @@ function Login() {
             <Head>
                 <title>Login</title>
             </Head>
+
+            <LoginContainer>
+                <Logo 
+                    src='https://assests.stickpng.com/images/580b57fcd9996e24bc43c543.png'
+                />
+            </LoginContainer>
         </Container>
     )
 }
@@ -14,5 +20,15 @@ function Login() {
 export default Login
 
 const Container = styled.div `
+
+`;
+
+
+const LoginContainer = styled.div `
+
+`;
+
+
+const Logo = styled.img `
 
 `;
