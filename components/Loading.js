@@ -2,7 +2,7 @@ import {Circle} from 'better-react-spinkit';
 
 function Loading() {
     return (
-        <center>
+        <center style={{display: 'grid', placeItems: 'center', height: '100vh'}}>
             <div>
                 <img 
                     src="https://cdn.iconscout.com/icon/free/png-256/whatsapp-circle-1868968-1583132.png" 
