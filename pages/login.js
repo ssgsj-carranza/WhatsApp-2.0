@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Head from 'next/head';
+import {Button} from '@material-ui/core';
 
 function Login() {
     return (
@@ -10,8 +11,9 @@ function Login() {
 
             <LoginContainer>
                 <Logo 
-                    src='https://assests.stickpng.com/images/580b57fcd9996e24bc43c543.png'
+                    src='https://cdn.iconscout.com/icon/free/png-256/whatsapp-circle-1868968-1583132.png'
                 />
+                <Button variant='outlined'>Sign in with Google</Button>
             </LoginContainer>
         </Container>
     )
@@ -30,5 +32,6 @@ const LoginContainer = styled.div `
 
 
 const Logo = styled.img `
-
+    height: 200px;
+    width: 200px;
 `;
