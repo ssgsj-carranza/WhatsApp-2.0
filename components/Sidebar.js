@@ -16,7 +16,7 @@ function Sidebar() {
 
         if (!input) return;
 
-        if (EmailValidator.validate(input)) {
+        if (EmailValidator.validate(input) && input !== user.email) {
             //need to add chat into the db 'chats' collection from logged in user
             db.collection('chats').add({
                 users: [user.email, input],
