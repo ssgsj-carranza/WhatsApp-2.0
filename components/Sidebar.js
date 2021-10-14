@@ -21,17 +21,19 @@ function Sidebar() {
 
         if (!input) return;
 
-        if (EmailValidator.validate(input) && input !== user.email) {
-            //need to add chat into the db 'chats' collection from logged in user
+        if (EmailValidator.validate(input) && !chatAlreadyExists(input) && input !== user.email) {
+            //need to add chat into the db 'chats' collection from logged in user if it doesnt exist, adds it to db
             db.collection('chats').add({
                 users: [user.email, input],
             });
         }
     };
 
-    const chatAlreadyExists = (recipientEmail) => {
-
-    };
+    const chatAlreadyExists = (recipientEmail) => 
+        !!chatsSnapshot?.docs.find(
+            (chat) => chat.data().users.find(
+                (user) => user === recipientEmail)?.length > 0
+        );
 
     return (
         <Container>
