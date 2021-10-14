@@ -6,10 +6,15 @@ import SearchIcon from '@material-ui/icons/Search';
 import * as EmailValidator from 'email-validator';
 import { auth, db } from '../firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
+import {useCollection} from 'react-firebase-hooks/firestore';
 
 function Sidebar() {
 // useAuthState keeps real time mapping of user authentication
     const [user] = useAuthState(auth);
+// Goes to firestore db and queries users array and checks where email is seen
+    const userChatRef = db.collection('chats').where('user', 'array-contains', user.email);
+//Listener
+    const [chatsSnapshot] = useCollection(userChatRef)
 
     const createChat = () => {
         const input = prompt('Please enter an email address for the user you wish to chat with');
@@ -22,6 +27,10 @@ function Sidebar() {
                 users: [user.email, input],
             });
         }
+    };
+
+    const chatAlreadyExists = (recipientEmail) => {
+
     };
 
     return (
