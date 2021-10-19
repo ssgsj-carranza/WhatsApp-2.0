@@ -66,7 +66,7 @@ function Sidebar() {
             <Chat 
                 key={chat.id}
                 id={chat.id}
-                user={chat.data().users}
+                users={chat.data().users}
             />
         ))}
         </Container>
