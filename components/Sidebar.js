@@ -13,14 +13,14 @@ function Sidebar() {
 // useAuthState keeps real time mapping of user authentication
     const [user] = useAuthState(auth);
 // Goes to firestore db and queries users array and checks where email is seen
-    const userChatRef = db.collection('chats').where('user', 'array-contains', user.email);
+    const userChatRef = db.collection('chats').where('users', 'array-contains', user.email);
 //Listener
-    const [chatsSnapshot] = useCollection(userChatRef)
+    const [chatsSnapshot] = useCollection(userChatRef);
 
     const createChat = () => {
         const input = prompt('Please enter an email address for the user you wish to chat with');
 
-        if (!input) return;
+        if (!input) return null;
 
         if (EmailValidator.validate(input) && !chatAlreadyExists(input) && input !== user.email) {
             //need to add chat into the db 'chats' collection from logged in user if it doesnt exist, adds it to db
@@ -72,6 +72,7 @@ function Sidebar() {
         </Container>
     );
 }
+
 
 export default Sidebar
 
