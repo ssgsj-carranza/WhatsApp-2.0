@@ -7,7 +7,7 @@ import * as EmailValidator from 'email-validator';
 import { auth, db } from '../firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollection} from 'react-firebase-hooks/firestore';
-import Chat from './Chat';
+import Chat from '../components/Chat';
 
 function Sidebar() {
 // useAuthState keeps real time mapping of user authentication
