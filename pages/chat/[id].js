@@ -28,11 +28,26 @@ export async function getServerSideProps(context) {
     const messageRes = await ref.collection('messages').orderBy('timestamp', 'asc').get();
     const messages = messageRes.docs.map((doc) => ({
         id: doc.id,
-        ...doc.data()
-    })).map((messages) => ({
+        ...doc.data(),
+    }))
+    .map((messages) => ({
         ...messages,
         timestamp: messages.timestamp.toDate().getTime()
     }));
+
+    //prep chats
+    const chatRes = await ref.get();
+    const chat = {
+        id: chatRes.id,
+        ...chatRes.data(),
+    };
+    //all of the above render on the server returning props below
+    return {
+        props: {
+            messages: JSON.stringify(messages),
+            chat: chat
+        },
+    };
 }
 
 
