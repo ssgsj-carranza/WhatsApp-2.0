@@ -3,10 +3,14 @@ import {Avatar} from "@material-ui/core";
 import getRecipientEmail from '../utils/getRecipientEmail';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
+import { useCollection } from "react-firebase-hooks/firestore";
+import {db} from '../firebase';
 
 function Chat({id, users}) {
   const [user] = useAuthState(auth);
+  const [recipientSnapshot] = useCollection(db.collection('users').where('email', '==', getRecipientEmail(users, user)));
   const recipientEmail = getRecipientEmail(users, user);
+  const recipient = recipientSnapshot?.docs?.[0]?.data();
 
     return (
         <Container>
