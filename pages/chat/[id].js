@@ -4,7 +4,7 @@ import Sidebar from '../../components/Sidebar';
 import ChatScreen from '../../components/ChatScreen';
 import { db } from '../../firebase';
 
-function Chat({}) {
+function Chat({chat, messages}) {
     return (
         <Container>
             <Head>
@@ -41,6 +41,8 @@ export async function getServerSideProps(context) {
         id: chatRes.id,
         ...chatRes.data(),
     };
+
+    console.log(chat, messages);
     //all of the above render on the server returning props below
     return {
         props: {
