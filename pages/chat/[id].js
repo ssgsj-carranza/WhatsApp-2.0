@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import Head from 'next/head';
+import Sidebar from '../../components/Sidebar';
+import ChatScreen from '../../components/ChatScreen';
 
 function Chat({}) {
     return (
@@ -7,7 +9,10 @@ function Chat({}) {
             <Head>
                 <title>Chat</title>
             </Head>
-            <h1>this is a chat</h1>
+            <Sidebar />
+            <ChatContainer>
+                <ChatScreen />
+            </ChatContainer>
         </Container>
     )
 }
@@ -15,4 +20,8 @@ function Chat({}) {
 export default Chat
 
 
-const Container = styled.div ``;
+const Container = styled.div `
+    display: flex;
+`;
+
+const ChatContainer = styled.div ``;
