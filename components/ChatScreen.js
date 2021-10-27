@@ -48,8 +48,12 @@ function ChatScreen({chat, messages}) {
             </Header>
             <MessageContainer>
                 {/* display messages here */}
+                {showMessages()}
                 <EndOfMessage />
             </MessageContainer>
+            <InputContainer>
+            
+            </InputContainer>
         </Container>
     )
 }
@@ -90,3 +94,5 @@ const HeaderIcons = styled.div ``;
 const MessageContainer = styled.div ``;
 
 const EndOfMessage = styled.div ``;
+
+const InputContainer = styled.div ``;
