@@ -2,14 +2,20 @@ import { Avatar, IconButton } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import styled from 'styled-components';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
+import {useCollection} from 'react-firebase-hooks/firestore';
 
 
 function ChatScreen({chat, messages}) {
     const [user] = useAuthState(auth);
     const router = useRouter();
+    const [messagesSnapshot] = useCollection(db.collection('chats').doc(router.query.id).collection('messages').orderBy('timestamp', 'asc'));
+
+    const showMessages = () => {
+
+    };
     
     return (
         <Container>
@@ -28,6 +34,10 @@ function ChatScreen({chat, messages}) {
                     </IconButton>
                 </HeaderIcons>
             </Header>
+            <MessageContainer>
+                {/* display messages here */}
+                <EndOfMessage />
+            </MessageContainer>
         </Container>
     )
 }
@@ -64,3 +74,7 @@ const HeaderInformation = styled.div `
 `;
 
 const HeaderIcons = styled.div ``;
+
+const MessageContainer = styled.div ``;
+
+const EndOfMessage = styled.div ``;
