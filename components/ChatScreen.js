@@ -34,7 +34,7 @@ function ChatScreen({chat, messages}) {
         }
     };
 
-    const sendMessage = () => {
+    const sendMessage = (e) => {
         e.preventDefault();
         //update last seen below
         db.collection('users').doc(user.uid).set({
@@ -70,7 +70,7 @@ function ChatScreen({chat, messages}) {
             </Header>
             <MessageContainer>
                 {/* display messages here */}
-                {showMessages()}
+                {/* {showMessages()} */}
                 <EndOfMessage />
             </MessageContainer>
             <InputContainer>
