@@ -10,6 +10,7 @@ import Message from './Message';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 import { useState } from 'react';
+import firebase from 'firebase';
 
 
 function ChatScreen({chat, messages}) {
@@ -31,6 +32,23 @@ function ChatScreen({chat, messages}) {
                 />
             ));
         }
+    };
+
+    const sendMessage = () => {
+        e.preventDefault();
+        //update last seen below
+        db.collection('users').doc(user.uid).set({
+            lastSeen: firebase.firestore.FieldValue.serverTimestamp(),
+        }, 
+            {merge: true}
+        );
+        db.collection('chats').doc(router.query.id).collection('messages').add({
+            timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+            message: input,
+            user: user.email,
+            photoURL: user.photoURL,
+        });
+        setInput('');
     };
     
     return (
