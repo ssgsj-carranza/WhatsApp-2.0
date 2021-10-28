@@ -9,9 +9,11 @@ import {useCollection} from 'react-firebase-hooks/firestore';
 import Message from './Message';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
+import { useState } from 'react';
 
 
 function ChatScreen({chat, messages}) {
+    const [input, setInput] = useState('');
     const [user] = useAuthState(auth);
     const router = useRouter();
     const [messagesSnapshot] = useCollection(db.collection('chats').doc(router.query.id).collection('messages').orderBy('timestamp', 'asc'));
@@ -55,7 +57,7 @@ function ChatScreen({chat, messages}) {
             </MessageContainer>
             <InputContainer>
                 <InsertEmoticonIcon />
-                <Input />
+                <Input value={input} onChange={e => setInput(e.target.value)} />
                 <MicIcon />
             </InputContainer>
         </Container>
