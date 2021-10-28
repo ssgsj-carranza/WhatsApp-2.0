@@ -31,6 +31,14 @@ function ChatScreen({chat, messages}) {
                     }}
                 />
             ));
+        } else {
+            return JSON.parse(messages).map((message) => (
+                <Message 
+                    key={message.id}
+                    user={message.user}
+                    message={message}
+                />
+            ));
         }
     };
 
@@ -70,7 +78,7 @@ function ChatScreen({chat, messages}) {
             </Header>
             <MessageContainer>
                 {/* display messages here */}
-                {/* {showMessages()} */}
+                {showMessages()}
                 <EndOfMessage />
             </MessageContainer>
             <InputContainer>
