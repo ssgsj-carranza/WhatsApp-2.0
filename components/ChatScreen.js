@@ -8,6 +8,7 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import {useCollection} from 'react-firebase-hooks/firestore';
 import Message from './Message';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
+import MicIcon from '@material-ui/icons/Mic';
 
 
 function ChatScreen({chat, messages}) {
@@ -55,6 +56,7 @@ function ChatScreen({chat, messages}) {
             <InputContainer>
                 <InsertEmoticonIcon />
                 <Input />
+                <MicIcon />
             </InputContainer>
         </Container>
     )
@@ -93,7 +95,11 @@ const HeaderInformation = styled.div `
 
 const HeaderIcons = styled.div ``;
 
-const MessageContainer = styled.div ``;
+const MessageContainer = styled.div `
+    padding: 30px;
+    background-color: #e5ded8;
+    min-height: 90vh;
+`;
 
 const EndOfMessage = styled.div ``;
 
