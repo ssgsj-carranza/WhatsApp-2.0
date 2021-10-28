@@ -7,6 +7,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import AttachFileIcon from '@material-ui/icons/AttachFile';
 import {useCollection} from 'react-firebase-hooks/firestore';
 import Message from './Message';
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 
 
 function ChatScreen({chat, messages}) {
@@ -52,7 +53,8 @@ function ChatScreen({chat, messages}) {
                 <EndOfMessage />
             </MessageContainer>
             <InputContainer>
-            
+                <InsertEmoticonIcon />
+                <Input />
             </InputContainer>
         </Container>
     )
@@ -95,4 +97,6 @@ const MessageContainer = styled.div ``;
 
 const EndOfMessage = styled.div ``;
 
-const InputContainer = styled.div ``;
+const InputContainer = styled.form ``;
+
+const Input = styled.div ``;
