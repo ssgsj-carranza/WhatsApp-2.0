@@ -1,6 +1,7 @@
 import { useAuthState } from "react-firebase-hooks/auth";
 import styled from "styled-components";
 import {auth} from '../firebase';
+import moment from "moment";
 
 function Message({user, message}) {
     const [userLoggedIn] = useAuthState(auth);
@@ -10,7 +11,11 @@ function Message({user, message}) {
 
     return (
         <Container>
-            <TypeOfMessage>{message.message}</TypeOfMessage>
+            <TypeOfMessage>
+                {/* moment converts unix timestamp to appropiate visible timestap*/}
+                {message.message}
+                <Timestamp>{message.timestamp ? moment(message.timestamp).format('LT') : '...'}</Timestamp>
+            </TypeOfMessage>
         </Container>
     )
 }
@@ -39,4 +44,14 @@ const Sender = styled(MessageElement)`
 const Reciever = styled(MessageElement)`
     background-color: whitesmoke;
     text-align: left;
+`;
+
+const Timestamp = styled.span`
+    color: gray;
+    padding: 10px;
+    font-size: 9px;
+    position: absolute;
+    bottom: 0;
+    text-align: right;
+    right: 0;
 `;
