@@ -6,11 +6,11 @@ function Message({user, message}) {
     const [userLoggedIn] = useAuthState(auth);
 
     //Determening sender or reciever
-
+    const TypeOfMessage = user ===userLoggedIn.email ? Sender : Reciever;
 
     return (
         <Container>
-            <p>{message.message}</p>
+            <TypeOfMessage>{message.message}</TypeOfMessage>
         </Container>
     )
 }
