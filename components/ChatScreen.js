@@ -13,12 +13,14 @@ import { useState } from 'react';
 import firebase from 'firebase';
 import getRecipientEmail from '../utils/getRecipientEmail';
 import TimeAgo from 'timeago-react';
+import { useRef } from 'react';
 
 
 function ChatScreen({chat, messages}) {
     const [input, setInput] = useState('');
     const [user] = useAuthState(auth);
     const router = useRouter();
+    const endOfMessagesRef = useRef(null);
     
     const [messagesSnapshot] = useCollection(db.collection('chats').doc(router.query.id).collection('messages').orderBy('timestamp', 'asc'));
 
@@ -49,6 +51,13 @@ function ChatScreen({chat, messages}) {
         }
     };
 
+    const scrollToBottom = () => {
+        endOfMessagesRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+        });
+    };
+
     const sendMessage = (e) => {
         e.preventDefault();
         //update last seen below
@@ -64,6 +73,7 @@ function ChatScreen({chat, messages}) {
             photoURL: user.photoURL,
         });
         setInput('');
+        scrollToBottom();
     };
 
     const recipient = recipientSnapshot?.docs?.[0]?.data();
@@ -103,7 +113,7 @@ function ChatScreen({chat, messages}) {
             <MessageContainer>
                 {/* display messages here */}
                 {showMessages()}
-                <EndOfMessage />
+                <EndOfMessage ref={endOfMessagesRef} />
             </MessageContainer>
             <InputContainer>
                 <InsertEmoticonIcon />
