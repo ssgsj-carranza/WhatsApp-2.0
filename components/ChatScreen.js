@@ -164,7 +164,9 @@ const MessageContainer = styled.div `
     min-height: 90vh;
 `;
 
-const EndOfMessage = styled.div ``;
+const EndOfMessage = styled.div `
+    margin-bottom: 50px;
+`;
 
 const InputContainer = styled.form `
     display: flex;
